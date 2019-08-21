@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bsgird报表</title>
+    <link rel="stylesheet" href="css/bsgrid.all.min.css"/>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/cash.css">
+    <link rel="stylesheet" href="js/DatePicker/skin/WdatePicker.css">
+    <link rel="stylesheet" href="css/pagination.css">
+    <link rel="stylesheet" href="css/cashPostallnvestDetails.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/grid.zh-CN.min.js"></script>
+    <script src="js/bsgrid.all.min.js"></script>
+    <script src="js/jquery.pagination.js"></script>
+    <script src="js/adapter.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/tools.js"></script>
+    <script src="js/DatePicker/WdatePicker.js"></script>
+    <script src="js/url.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="nav">
+        <div class="user_select form">
+            <label>会员名称</label>
+            <div class="search_input_div">
+                <input id="choose_user" class="user_name" type="text">
+                <img class="search_input_img" src="img/down1.png" alt="">
+                <div class="user-list" style="display: none">
+                    <ul>
+
+                    </ul>
+                </div>
+                <div class="model" style="display: none"></div>
+                <!--<input type="text" class="user_id" style="display: none;">-->
+            </div>
+        </div>
+        <div class="park_select form">
+            <label>选择车场</label>
+            <div class="search_input_div">
+                <input id="choose_park" class="park_name" type="text">
+                <img class="search_input_img" src="img/down1.png" alt="">
+                <div class="park-list" style="display: none">
+                    <ul>
+
+                    </ul>
+                </div>
+                <div class="model" style="display: none"></div>
+                <!--<input type="text" class="user_id" style="display: none;">-->
+            </div>
+        </div>
+        <div class="order_id form">
+            <label>订单号</label>
+            <input type="text" class="order_search"/>
+        </div>
+        <div class="time form">
+            <label>入账时间</label>
+            <input class="start_datetime_search" style="margin-right: .4rem" id="stime_search" type="text" name="stime" onclick="WdatePicker({skin:'twoer',
+                isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'etime_search\')}'})">-
+            <input class="end_datetime_search" id="etime_search" type="text" name="etime" onclick="WdatePicker({skin:'twoer',isShowClear:false,
+                readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'stime_search\')}'})">
+        </div>
+        <div class="searchInput form">
+            <img src="img/search.png" alt="">
+            <span>查询</span>
+        </div>
+    </div>
+    <div class="bstable">
+        <table id="searchTable" style="width: 100%;background: rgb(249,249,249)">
+            <tr>
+                <th colspan="10" style="padding: 0 1rem;font-size: 1.1rem;">
+                    <div style="display: inline-block;float: left">车场入账明细报表</div>
+                    <div style="display: inline-block;float: right">共<span id="totalTranCount"></span>笔，总金额收入：<span id="totalAmount"></span>元，
+                        总手续费：<span id="totalFeeAmount"></span>元，入账：<span id="totalTranAmount"></span>元</div>
+                </th>
+            </tr>
+            <tr>
+                <th w_index="third_cust_name" width="8%">会员名称</th>
+                <th w_index="car_park_name" width="8%">车场名称</th>
+                <th w_index="plate_no" width="8%;">车牌</th>
+                <th w_render="billTable.incountMoney" width="8%;" w_align="right">收入金额(元)</th>
+                <th w_render="billTable.taxRate" width="5%">费率</th>
+                <th w_render="billTable.comission" width="10%" w_align="right">手续费(元)</th>
+                <th w_render="billTable.investMoney" width="10%" w_align="right">入账金额(元)</th>
+                <th w_index="create_datetime" width="15%">入账时间</th>
+                <th w_index="pay_order_no" width="15%">订单号</th>
+                <th w_index="third_log_no" width="15%">流水号</th>
+            </tr>
+            <tfoot>
+            <tr>
+                <td>本页小计</td>
+                <td>-</td>
+                <td>-</td>
+                <td w_agg="custom,incountMoney"></td>
+                <td>-</td>
+                <td w_agg="custom,commission"></td>
+                <td w_agg="custom,investMoney"></td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

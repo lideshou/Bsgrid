@@ -1,0 +1,60 @@
+#searchTable_pt {
+    display: inline-block;
+}
+
+#searchTable_pt_outTab tr {}
+
+#searchTable_pt_outTab td[align] {
+    display: inline-block;
+    float: right;
+}
+
+searchTable_pt_pageSize {
+}
+
+.pagination {
+    height: 100%;
+    display: inline-block;
+}
+
+.pagination a {
+    text-decoration: none;
+    border: solid 1px #bfbfbf;
+    color: #262626;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    margin-right: 0.375rem;
+    box-sizing: border-box;
+    height: 1.625rem;
+    line-height: 1.625rem;
+    min-width: 1.65rem;
+    text-align: center;
+    border-radius: 0.1875rem;
+}
+
+.pagination .current {
+    background: #00ABEE;
+    color: #fff;
+    border-radius: 0.1875rem;
+}
+
+.pagination .current:hover{
+    cursor: pointer;
+}
+
+.pagination .current.prev,
+.pagination .current.next {
+    color: #999;
+    border-color: #999;
+    border: solid 0.5px #bfbfbf;
+    background: #fff;
+    width: 3.25rem;
+}
+
+.next,
+.prev {
+    width: 3.25rem !important;
+}
